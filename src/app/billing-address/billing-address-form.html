@@ -11,43 +11,89 @@
       <div class="row">
         <mat-form-field class="full-width px-1">
           <mat-label>First Name</mat-label>
-          <input matInput formControlName="firstName" />
+          <input
+            matInput
+            formControlName="firstName"
+            onkeydown="return /[a-z]/i.test(event.key)"
+          />
+          <mat-error *ngIf="myForm.get('firstName')?.errors?.['required']">
+            First name is required
+          </mat-error>
         </mat-form-field>
         <mat-form-field class="full-width px-1">
           <mat-label>Last Name </mat-label>
-          <input matInput formControlName="lastName" />
+          <input
+            matInput
+            formControlName="lastName"
+            onkeydown="return /[a-z]/i.test(event.key)"
+          />
+          <mat-error *ngIf="myForm.get('lastName')?.errors?.['required']">
+            Last name is required
+          </mat-error>
         </mat-form-field>
       </div>
       <div class="row">
         <mat-form-field class="full-width px-1">
           <mat-label>Address Line 1 </mat-label>
           <input matInput formControlName="address1" />
+          <mat-error *ngIf="myForm.get('address1')?.errors?.['required']">
+            Address is required
+          </mat-error>
         </mat-form-field>
       </div>
       <div class="row">
         <mat-form-field class="full-width px-1">
           <mat-label>Address Line 2 </mat-label>
           <input matInput formControlName="address2" />
+          <mat-error *ngIf="myForm.get('address2')?.errors?.['required']">
+            Address is required
+          </mat-error>
         </mat-form-field>
       </div>
       <div class="row">
         <mat-form-field class="full-width px-1">
           <mat-label>City / District </mat-label>
-          <input matInput formControlName="cityOrDistrict" />
+          <input
+            matInput
+            formControlName="cityOrDistrict"
+            onkeydown="return /[a-z]/i.test(event.key)"
+          />
+          <mat-error *ngIf="myForm.get('cityOrDistrict')?.errors?.['required']">
+            City or District is required
+          </mat-error>
         </mat-form-field>
         <mat-form-field class="full-width px-1">
           <mat-label>Province / State </mat-label>
-          <input matInput formControlName="provinceOrState" />
+          <input
+            matInput
+            formControlName="provinceOrState"
+            onkeydown="return /[a-z]/i.test(event.key)"
+          />
+          <mat-error
+            *ngIf="myForm.get('provinceOrState')?.errors?.['required']"
+          >
+            Province or State is required
+          </mat-error>
         </mat-form-field>
       </div>
       <div class="row">
         <mat-form-field class="full-width px-1">
           <mat-label>Country </mat-label>
-          <input matInput formControlName="country" />
+          <input
+            matInput
+            formControlName="country"
+            onkeydown="return /[a-z]/i.test(event.key)"
+          />
+          <mat-error *ngIf="myForm.get('country')?.errors?.['required']">
+            Country is required
+          </mat-error>
         </mat-form-field>
         <mat-form-field class="full-width px-1">
           <mat-label>Postal Code </mat-label>
-          <input matInput formControlName="postalCode" />
+          <input matInput formControlName="postalCode" type="number" />
+          <mat-error *ngIf="myForm.get('postalCode')?.errors?.['required']">
+            Postal Code is required
+          </mat-error>
         </mat-form-field>
       </div>
     </mat-card>
@@ -71,8 +117,11 @@
         <mat-form-field class="full-width px-1">
           <mat-label>Email</mat-label>
           <input matInput formControlName="email" />
-          <mat-error ngIf="email?.invalid">
+          <mat-error *ngIf="myForm.get('email')?.errors?.['email']">
             Your email does not look right
+          </mat-error>
+          <mat-error *ngIf="myForm.get('email')?.errors?.['required']">
+            Email is required
           </mat-error>
         </mat-form-field>
       </div>
@@ -80,10 +129,27 @@
         <mat-form-field class="full-width px-1">
           <mat-label>Password</mat-label>
           <input type="password" matInput formControlName="password" />
+
+          <mat-error *ngIf="myForm.get('password')?.errors?.['pattern']">
+            Please follow the pattern
+          </mat-error>
+          <mat-error *ngIf="myForm.get('password')?.errors?.['required']">
+            Password is required
+          </mat-error>
         </mat-form-field>
         <mat-form-field class="full-width px-1">
           <mat-label>Confirm Password</mat-label>
           <input type="password" matInput formControlName="confirmPassword" />
+          <mat-error
+            *ngIf="myForm.get('confirmPassword')?.errors?.['required']"
+          >
+            Confirm Password is required
+          </mat-error>
+          <mat-error
+            *ngIf="myForm.get('confirmPassword')?.errors?.['confirmPasswordValidator']"
+          >
+            Passsword and Confirm Password didn't match.
+          </mat-error>
         </mat-form-field>
       </div>
       <div class="row">

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CustomValidators } from '../providers/CustomValidators';
+import { ConfirmPasswordValidator } from '../providers/CustomValidators.validator';
 @Component({
   selector: 'billing-address-form',
   templateUrl: './billing-address-form.html',
@@ -35,15 +35,27 @@ export class BillingAddressFormComponent implements OnInit {
             ),
           ],
         ],
-        confirmPassword: ['', [Validators.required]],
+        confirmPassword: [
+          '',
+          [
+            Validators.required,
+            Validators.pattern(
+              /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/
+            ),
+          ],
+        ],
       },
-      CustomValidators.mustMatch('password', 'confirmPassword')
+      {
+        validator: ConfirmPasswordValidator('password', 'confirmPassword'),
+      }
     );
 
     // this.myForm.valueChanges.subscribe(console.log);
+    // console.log(this.myForm.get('confirmPassword')?.errors);
   }
 
   submitButtonClicked() {
+    console.log(this.myForm.get('password')?.errors);
     this.loading = false;
     alert('form submitted ');
     console.log(this.myForm.value);
