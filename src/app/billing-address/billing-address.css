@@ -1,0 +1,43 @@
+#form-style {
+  /* display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 50%; */
+}
+.px-5 {
+  padding: 0 5rem;
+}
+.px-1 {
+  padding: 0 1rem;
+}
+.px-2 {
+  padding: 0 2rem;
+}
+.py-1 {
+  padding: 1rem 0;
+}
+.my-1 {
+  margin: 1rem 0;
+}
+#form-container {
+  width: 40%;
+  margin: auto;
+}
+.row {
+  display: flex;
+  padding: 5px 0;
+}
+.d-flex {
+  display: flex;
+}
+.justify-content-end {
+  justify-content: end;
+}
+.full-width {
+  width: 100%;
+}
+
+.spinner {
+  margin: auto;
+}

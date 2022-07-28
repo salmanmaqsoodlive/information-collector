@@ -1,0 +1,113 @@
+<div id="form-container">
+  <form
+    [formGroup]="myForm"
+    [hidden]="!loading"
+    id="form-style"
+    (submit)="submitButtonClicked()"
+  >
+    <mat-card class="my-1">
+      <h2>Billing Address</h2>
+
+      <div class="row">
+        <mat-form-field class="full-width px-1">
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstName" />
+        </mat-form-field>
+        <mat-form-field class="full-width px-1">
+          <mat-label>Last Name </mat-label>
+          <input matInput formControlName="lastName" />
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field class="full-width px-1">
+          <mat-label>Address Line 1 </mat-label>
+          <input matInput formControlName="address1" />
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field class="full-width px-1">
+          <mat-label>Address Line 2 </mat-label>
+          <input matInput formControlName="address2" />
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field class="full-width px-1">
+          <mat-label>City / District </mat-label>
+          <input matInput formControlName="cityOrDistrict" />
+        </mat-form-field>
+        <mat-form-field class="full-width px-1">
+          <mat-label>Province / State </mat-label>
+          <input matInput formControlName="provinceOrState" />
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field class="full-width px-1">
+          <mat-label>Country </mat-label>
+          <input matInput formControlName="country" />
+        </mat-form-field>
+        <mat-form-field class="full-width px-1">
+          <mat-label>Postal Code </mat-label>
+          <input matInput formControlName="postalCode" />
+        </mat-form-field>
+      </div>
+    </mat-card>
+
+    <div class="row">
+      <mat-checkbox formControlName="isSameBillingAddress" class="py-1"
+        >My shipping address is same as my billing address.</mat-checkbox
+      >
+    </div>
+    <div class="row">
+      <mat-radio-group formControlName="isCreateAccount">
+        <mat-radio-button [value]="true">Create Account</mat-radio-button>
+        <mat-radio-button [value]="false" class="px-2"
+          >Checkout as a Guest</mat-radio-button
+        >
+      </mat-radio-group>
+    </div>
+
+    <mat-card class="my-1">
+      <div class="row">
+        <mat-form-field class="full-width px-1">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" />
+          <mat-error ngIf="email?.invalid">
+            Your email does not look right
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field class="full-width px-1">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput formControlName="password" />
+        </mat-form-field>
+        <mat-form-field class="full-width px-1">
+          <mat-label>Confirm Password</mat-label>
+          <input type="password" matInput formControlName="confirmPassword" />
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-hint class="px-1" align="start"
+          >Minimum eight characters, at least one uppercase letter, one
+          lowercase letter, one number and one special character (@$!%*#?&)
+        </mat-hint>
+      </div>
+    </mat-card>
+    <div class="d-flex justify-content-end">
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="myForm.invalid"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+
+  <!-- <mat-spinner class="spinner" ngIf="!loading"></mat-spinner> -->
+
+  <!-- <h1 class="notification is-success" ngIf="loading">
+    Yay! We received your submission
+  </h1> -->
+</div>
