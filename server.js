@@ -1,5 +1,5 @@
 const express = require("express");
-const _port = 8080;
+const _port = process.env.PORT || 5000;
 const _app_folder = "dist/hello-world";
 const app = express();
 
