@@ -1,0 +1,25 @@
+TS CSS .example-spacer {
+  flex: 1 1 auto;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.mx-2 {
+  margin: 0 2rem;
+}
+
+.justify-content-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  color: rgb(132, 9, 240);
+}

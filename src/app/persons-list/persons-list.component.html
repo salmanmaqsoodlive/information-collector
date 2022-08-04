@@ -1,0 +1,51 @@
+<div>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 my-5">
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef>First Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.firstName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef>Last Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.lastName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="age">
+      <th mat-header-cell *matHeaderCellDef>Age</th>
+      <td mat-cell *matCellDef="let element">{{ element.age }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="dob">
+      <th mat-header-cell *matHeaderCellDef>Date of Birth</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.dob.substr(0, 10) }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell class="justify-content-start" *matCellDef="let element">
+        <div class="flex-direction-column">
+          <a [routerLink]="['/list', element.id]">
+            <mat-icon
+              class="pointer"
+              aria-hidden="false"
+              aria-label="Example home icon"
+              fontIcon="edit"
+            ></mat-icon>
+          </a>
+          <mat-icon
+            class="mt-2 pointer"
+            aria-hidden="false"
+            aria-label="Example home icon"
+            fontIcon="delete"
+            (click)="deletePerson(element.id)"
+          ></mat-icon>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

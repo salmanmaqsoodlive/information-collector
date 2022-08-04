@@ -1,0 +1,26 @@
+table {
+  margin: 5rem;
+  width: 60%;
+}
+
+div {
+  display: flex;
+  justify-content: center;
+}
+
+.flex-direction-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.justify-content-start {
+  display: flex;
+  justify-content: start;
+}
+
+.mt-1 {
+  margin: 1rem 0;
+}
+.pointer {
+  cursor: pointer;
+}

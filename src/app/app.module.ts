@@ -7,6 +7,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BillingAddressFormModule } from './billing-address/billing-address-form.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { NavbarModule } from './navbar/navbar.module';
+import { RouterModule } from '@angular/router';
+import { BillingAddressFormComponent } from './billing-address/billing-address-form.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { PersonsListModule } from './persons-list/persons-list.module';
+import { PersonsListComponent } from './persons-list/persons-list.component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,6 +23,26 @@ import { CommonModule } from '@angular/common';
     AppRoutingModule,
     BrowserAnimationsModule,
     BillingAddressFormModule,
+    NavbarModule,
+    PersonsListModule,
+    RouterModule.forRoot([
+      {
+        path: '',
+        component: PersonsListComponent,
+      },
+      {
+        path: 'list',
+        component: PersonsListComponent,
+      },
+      {
+        path: 'create',
+        component: BillingAddressFormComponent,
+      },
+      {
+        path: 'list/:id',
+        component: BillingAddressFormComponent,
+      },
+    ]),
   ],
   providers: [],
   bootstrap: [AppComponent],
