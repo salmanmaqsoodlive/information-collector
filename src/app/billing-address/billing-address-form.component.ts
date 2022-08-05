@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ConfirmPasswordValidator } from '../providers/CustomValidators.validator';
 import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'billing-address-form',
   templateUrl: './billing-address-form.html',
@@ -18,7 +18,8 @@ export class BillingAddressFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -66,6 +67,7 @@ export class BillingAddressFormComponent implements OnInit {
       .post('https://golang-crud-api.herokuapp.com/api/persons', payload)
       .subscribe((response: any) => {
         this.myForm.reset();
+        this.router.navigateByUrl('list');
       });
   }
 
@@ -88,6 +90,7 @@ export class BillingAddressFormComponent implements OnInit {
       .put(`https://golang-crud-api.herokuapp.com/api/persons/${id}`, payload)
       .subscribe((response: any) => {
         this.myForm.reset();
+        this.router.navigateByUrl('list');
       });
   }
 
